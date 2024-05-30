@@ -1,0 +1,88 @@
+{
+    "FreeTimeBooks" : {
+        "Series": {
+            "Series1" : {
+                "Series": "Todesreihe" ,
+                "Author" : "Andreas Gruber",
+                "Publisher" : "Goldmann Verlag",
+                "Books" : [
+                    {
+                        "Title" : "Todesfrist",
+                        "ISBN" : "978-3442478668",
+                        "Pages" : 432,
+                        "Genre": "Krimi-Thriller",
+                        "IsRead": true
+                    },
+                    {
+                        "Title": "Todesurteil",
+                        "ISBN": "978-3442480258",
+                        "Pages": 592,
+                        "Genre": "Krimi-Thriller",
+                        "IsRead": true
+                    },
+                    {
+                        "Title": "Todesmärchen",
+                        "ISBN": "978-3442483129",
+                        "Pages": 544,
+                        "Genre": "Krimi-Thriller",
+                        "IsRead" : true
+                    },
+                    {
+                        "Title" : "Todesreigen",
+                        "ISBN": "978-3442483136",
+                        "Pages": 576,
+                        "Genre": "Krimi-Thriller",
+                        "IsRead": false
+                    },
+                    {
+                        "Title" : "Todesmal",
+                        "ISBN" : "978-3442486564",
+                        "Pages": 592,
+                        "Genre": "Krimi-Thriller",
+                        "IsRead": false
+                    },
+                    {
+                        "Title": "Todesschmerz",
+                        "ISBN": "978-3442491094",
+                        "Pages" : 592,
+                        "Genre": "Krimi-Thriller",
+                        "IsRead": false
+                    },
+                    {
+                        "Title": "Todesrache",
+                        "ISBN": "978-3442491100",
+                        "Pages": 592,
+                        "Genre": "Krimi-Thriller",
+                        "IsRead": false
+                    },
+                    {
+                        "Title": "Todesspur",
+                        "ISBN": "978-3442494484",
+                        "Pages": 576,
+                        "Genre" :"Krimi-Thriller",
+                        "IsRead": false
+                    }
+                ]
+            },
+            "Series2" : {
+                "Series" : "Hunter und Garcie Reihe",
+                "Author": "Chris Carter",
+                "Publisher" : "Ullstein Buchverlage",
+                "Books" : [
+                    {
+                        "Title" : "Der Kruzifix-Killer",
+                        "ISBN": "978-3548281094",
+                        "Pages" : 480,
+                        "Genre" : "Krimi-Thriller",
+                        "IsRead" : true
+                    }, 
+                    {
+                        
+                    }
+                ]
+
+            }
+        }
+    }
+}
+
