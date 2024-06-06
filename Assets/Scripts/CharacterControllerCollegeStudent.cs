@@ -10,9 +10,10 @@ public class CharacterControllerCollegeStudent : MonoBehaviour
 {
     #region Varbiable Initialization
     // Start is called before the first frame update
-    public float playerSpeed = 10.0f;
-    public float JumpForce = 8.0f;
-    public float ScooterSpeed = 20.0f;
+    public const float playerSpeed = 10.0f;
+    public const float playerJumpForce = 12.0f;
+    public const float scooterJumpForce = 12.0f;
+    public const float ScooterSpeed = 20.0f;
     private Rigidbody2D rigidbody;
     private bool Jumping = false;
     private bool JumpingEnabled = true;
@@ -30,6 +31,7 @@ public class CharacterControllerCollegeStudent : MonoBehaviour
     private Quaternion currentRotation;
     public float maxRaycastDistance = 1.0f;
     private bool IsRotated = false;
+    private bool IsMovingForward = true;
     private Vector3 startingPosition { get; set; }
     #endregion
     #region Events
@@ -59,6 +61,16 @@ public class CharacterControllerCollegeStudent : MonoBehaviour
         var movement = Input.GetAxis("Horizontal");
         var speed = Scooting ? ScooterSpeed : playerSpeed;
         transform.position += new Vector3(movement, 0, 0) * Time.deltaTime * speed;
+
+        if (movement > 0 && !IsMovingForward)
+        {
+            FlipCharacter();
+        }
+        else if (movement < 0 && IsMovingForward)
+        {
+            FlipCharacter();
+        }
+
         if(movement!= 0 && !Jumping)
         {
             animator.SetBool("isRun", true);
@@ -74,7 +86,15 @@ public class CharacterControllerCollegeStudent : MonoBehaviour
         // Jumping
         if (Input.GetButtonDown("Jump") && JumpingEnabled)
         {
-            rigidbody.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
+            if(Scooting)
+            {
+                rigidbody.AddForce(new Vector2(0, scooterJumpForce), ForceMode2D.Impulse);
+            }
+            else
+            {
+                rigidbody.AddForce(new Vector2(0, playerJumpForce), ForceMode2D.Impulse);
+
+            }
             Jumping = true;
             animator.SetBool("isJump", true);
             animator.SetBool("isRun", false);
@@ -104,6 +124,13 @@ public class CharacterControllerCollegeStudent : MonoBehaviour
         #endregion
         CharacterSlope(beginOfSlope: new Vector2(9f, -4f), endOfSlope: new Vector2(26f, 4.6f), Rotate90: false);
 
+    }
+    private void FlipCharacter()
+    {     
+        Vector3 currentScale = transform.localScale;
+        currentScale.x *= -1;
+        gameObject.transform.localScale = currentScale;
+        IsMovingForward = !IsMovingForward;
     }
     #endregion
 
@@ -147,11 +174,6 @@ public class CharacterControllerCollegeStudent : MonoBehaviour
         SFXAudioSource.Play();
     }
     #endregion
-
-    private void FixCharacterRotation()
-    {
-        transform.rotation = Quaternion.identity;
-    }
     private void CharacterSlope(Vector2 beginOfSlope, Vector2 endOfSlope, bool Rotate90)
     {
         Vector2 playerPosition = transform.position; // E

@@ -1,0 +1,4 @@
+repository "CollectBooks&Games@unity_J7udbrGT0eeUkg@cloud"
+  path "/"
+    br "/main"
+    co "/main"
